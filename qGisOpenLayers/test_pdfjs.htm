@@ -1,0 +1,500 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>PDF Viewer Test</title>
+
+    <meta name="keywords" content="keywords,here" />
+    <meta name="description" content="description here" />
+    <meta name="author" content="name" />
+    <meta name="copyright" content="" />
+    <meta name="robots" content="index, follow" />
+
+    <!--
+    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    -->
+
+    <!--
+        https://sanusart.github.io/html-now/
+        http://htmlshell.com/
+    -->
+
+
+    <!--
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type='text/css' />
+    -->
+
+    <style type="text/css">
+
+        #confirmOverlay
+        {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: url('ie.png');
+            background: -moz-linear-gradient(rgba(11,11,11,0.1), rgba(11,11,11,0.6)) repeat-x rgba(11,11,11,0.2);
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(11,11,11,0.1)), to(rgba(11,11,11,0.6))) repeat-x rgba(11,11,11,0.2);
+            z-index: 100000;
+        }
+
+        #confirmBox
+        {
+            background: url('body_bg.jpg') repeat-x left bottom #e5e5e5;
+            width: 460px;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin: -130px 0 0 -230px;
+            border: 1px solid rgba(33, 33, 33, 0.6);
+            -moz-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+            -webkit-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+            box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+        }
+
+        #confirmBox h1,
+        #confirmBox p
+        {
+            font: 26px/1 'Cuprum','Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+            background: url('header_bg.jpg') repeat-x left bottom #f5f5f5;
+            padding: 18px 25px;
+            text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+            color: #666;
+        }
+
+        #confirmBox h1
+        {
+            letter-spacing: 0.3px;
+            color: #888;
+        }
+
+        #confirmBox p
+        {
+            background: none;
+            font-size: 16px;
+            line-height: 1.4;
+            padding-top: 35px;
+        }
+
+        #confirmButtons
+        {
+            padding: 15px 0 25px;
+            text-align: center;
+        }
+
+        #confirmBox .button
+        {
+            display: inline-block;
+            background: url('buttons.png') no-repeat;
+            color: white;
+            position: relative;
+            height: 33px;
+            font: 17px/33px 'Cuprum','Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+            margin-right: 15px;
+            padding: 0 35px 0 40px;
+            text-decoration: none;
+            border: none;
+        }
+
+        #confirmBox .button:last-child
+        {
+            margin-right: 0;
+        }
+
+        #confirmBox .button span
+        {
+            position: absolute;
+            top: 0;
+            right: -5px;
+            background: url('buttons.png') no-repeat;
+            width: 5px;
+            height: 33px;
+        }
+
+        #confirmBox .blue
+        {
+            background-position: left top;
+            text-shadow: 1px 1px 0 #5889a2;
+        }
+
+        #confirmBox .blue span
+        {
+            background-position: -195px 0;
+        }
+
+        #confirmBox .blue:hover
+        {
+            background-position: left bottom;
+        }
+
+        #confirmBox .blue:hover span
+        {
+            background-position: -195px bottom;
+        }
+
+        #confirmBox .gray
+        {
+            background-position: -200px top;
+            text-shadow: 1px 1px 0 #707070;
+        }
+
+        #confirmBox .gray span
+        {
+            background-position: -395px 0;
+        }
+
+        #confirmBox .gray:hover
+        {
+            background-position: -200px bottom;
+        }
+
+        #confirmBox .gray:hover span
+        {
+            background-position: -395px bottom;
+        }
+
+    </style>
+
+
+    <style type="text/css">
+        html, body
+        {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .noselect
+        {
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Chrome/Safari/Opera */
+            -khtml-user-select: none; /* Konqueror */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE/Edge */
+            user-select: none; /* non-prefixed version, currently
+                                  not supported by any browser */
+        }
+
+        .hand
+        {
+            cursor: pointer;
+        }
+
+        .odd
+        {
+            background-image: -webkit-linear-gradient(left, transparent 90%, #ddd 100%);
+            background-image: -moz-linear-gradient(left, transparent 90%, #ddd 100%);
+            background-image: -o-linear-gradient(left, transparent 90%, #ddd 100%);
+            background-image: -ms-linear-gradient(left, transparent 90%, #ddd 100%);
+        }
+
+        .even
+        {
+            background-image: -webkit-linear-gradient(right, transparent 90%, #ddd 100%);
+            background-image: -moz-linear-gradient(right, transparent 90%, #ddd 100%);
+            background-image: -o-linear-gradient(right, transparent 90%, #ddd 100%);
+            background-image: -ms-linear-gradient(right, transparent 90%, #ddd 100%);
+        }
+
+
+        .oldodd
+        {
+            background-image: -webkit-linear-gradient(left, #FFF 95%, #ddd 100%);
+            background-image: -moz-linear-gradient(left, #FFF 95%, #ddd 100%);
+            background-image: -o-linear-gradient(left, #FFF 95%, #ddd 100%);
+            background-image: -ms-linear-gradient(left, #FFF 95%, #ddd 100%);
+        }
+
+        .oldeven
+        {
+            background-image: -webkit-linear-gradient(right, #FFF 95%, #ddd 100%);
+            background-image: -moz-linear-gradient(right, #FFF 95%, #ddd 100%);
+            background-image: -o-linear-gradient(right, #FFF 95%, #ddd 100%);
+            background-image: -ms-linear-gradient(right, #FFF 95%, #ddd 100%);
+        }
+
+    </style>
+
+
+    
+    <script src="Scripts/PdfJS/pdf.js"></script>
+    <script src="Scripts/PdfJS/pdf.worker.js"></script>
+    
+
+    <!--
+    <link rel="stylesheet" href="Scripts/OpenLayers3/ol.css" type="text/css">
+    <script src="Scripts/OpenLayers3/ol.js" type="text/javascript"></script>
+    -->
+</head>
+<body>
+
+    <!--
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    -->
+
+    <!--
+    <iframe src="viewer.html?file=Module%2fOK_BD_Modul_Berichte.pdf#page=2&zoom=200" allowtransparency="true" name="foo" frameborder="0" style="width: 100%; height: 100%;"></iframe>    
+
+    -->
+
+    
+    <div id="confirmOverlay" style="display: none;">
+        <div id="confirmBox">
+
+            <h1 class="noselect">Dokumentende erreicht</h1>
+            <p class="noselect">Sie haben das Dokumentende erreicht. <br />Keine weitere Seiten.</p>
+
+            <div id="confirmButtons">
+                <a class="button blue noselect" onclick="document.getElementById('confirmOverlay').style.display = 'none';" href="#">OK<span></span></a>
+                <!--
+                <a class="button blue" href="#">Yes<span></span></a>
+                <a class="button gray" href="#">No<span></span></a>
+                -->
+            </div>
+        </div>
+    </div>
+    
+
+    <div style="text-align: center; margin-top: 20px;">
+
+        <div class="noselect" style="position:relative; display: inline-block;">
+            <div class="noselect hand" onclick="turnMe(left - 2, right - 2);" style="position: absolute; left: -20px; top: 0px; bottom: 0px; writing-mode: vertical-lr; -ms-writing-mode: tb-rl; transform-origin: center; transform: rotate(180deg); ">
+                Rückw&auml;rts
+            </div>
+            <div class="noselect hand" onclick="turnMe(left - -2, right - -2);" style="position: absolute; right: -20px; top: 0px; bottom: 0px; writing-mode: vertical-lr; -ms-writing-mode: tb-rl; transform-origin: center; transform: rotate(180deg); ">
+                Vorw&auml;rts
+            </div>
+
+
+            <div style="position: relative; display: inline-block;">
+                <div class="noselect" style="position: absolute; top: -20px; left: 0px; right: 0px;">
+                    <!--<span>Seite:</span>-->
+                    <span id="spnLeft"></span>
+                    <span>/</span>
+                    <span id="spnLeftMax"></span>
+                </div>
+                <div class="page odd noselect hand" style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 5px; overflow: hidden; z-index: auto;" onclick="turnMe(left - 2, right - 2);">
+                    &nbsp;
+                </div>
+                <canvas id="left-canvas" style="border:1px  solid gray"></canvas>
+            </div>
+
+            <div style="position: relative; display: inline-block;">
+                <div class="noselect" style="position: absolute; top: -20px; left: 0px; right: 0px;">
+                    <!--<span>Seite:</span>-->
+                    <span id="spnRight"></span>
+                    <span>/</span>
+                    <span id="spnRightMax"></span>
+                </div>
+
+                <div class="page even noselect hand" style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 5px; overflow: hidden; z-index: auto;" onclick="turnMe(left - -2, right - -2);">
+                    &nbsp;
+                </div>
+                <canvas id="right-canvas" style="border:1px  solid gray" onclick=""></canvas>
+            </div>
+        </div>
+    </div>
+
+        
+
+        <script type="text/javascript">
+            var myPDF;
+            var left = 0;
+            var right = 0;
+
+
+
+
+            function turnMe(pageLeft, pageRight)
+            {
+                var scale = 1.25;
+                var numPages = myPDF.numPages;
+                // alert(numPages);
+
+                if (pageLeft < 1)
+                {
+                    // alert("Dokumentbeginn erreicht");
+                    document.getElementById('confirmOverlay').style.display = 'block';
+                    return;
+                }
+                    
+                if(pageRight > numPages)
+                {
+                    // alert("Dokumentende erreicht");
+                    document.getElementById('confirmOverlay').style.display = 'block';
+                    return;
+                }
+                    
+
+                left = pageLeft;
+                right = pageRight;
+
+
+                var spnLeft = document.getElementById("spnLeft");
+                var spnRight = document.getElementById("spnRight");
+
+                var spnLeftMax = document.getElementById("spnLeftMax");
+                var spnRightMax = document.getElementById("spnRightMax");
+
+                spnLeftMax.textContent = numPages;
+                spnRightMax.textContent = numPages;
+                
+
+                if (spnLeft !== null)
+                    spnLeft.textContent = left;
+
+                if (spnRight !== null)
+                    spnRight.textContent = right;
+
+
+
+
+
+                myPDF.getPage(pageLeft).then(function getPageHelloWorld(page)
+                {
+                    var viewport = page.getViewport(scale);
+
+                    //
+                    // Prepare canvas using PDF page dimensions
+                    //
+                    var canvas = document.getElementById('left-canvas');
+                    var context = canvas.getContext('2d');
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+
+                    //
+                    // Render PDF page into canvas context
+                    //
+                    var renderContext = {
+                        canvasContext: context,
+                        viewport: viewport
+                    };
+                    page.render(renderContext);
+                });
+
+
+                if (pageRight > numPages)
+                {
+                    var canvas = document.getElementById('right-canvas');
+                    var context = canvas.getContext('2d');
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+                }
+                    
+
+                myPDF.getPage(pageRight).then(function getPageHelloWorld(page)
+                {
+                    var viewport = page.getViewport(scale);
+
+                    //
+                    // Prepare canvas using PDF page dimensions
+                    //
+                    var canvas = document.getElementById('right-canvas');
+                    var context = canvas.getContext('2d');
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+
+                    //
+                    // Render PDF page into canvas context
+                    //
+                    var renderContext = {
+                        canvasContext: context,
+                        viewport: viewport
+                    };
+                    page.render(renderContext);
+                });
+            }
+
+
+            function autorun()
+            {
+                //
+                PDFJS.workerSrc = '/Scripts/PdfJS/pdf.worker.js';
+
+                var fileName = "/Module/OK_BD_Modul_Berichte.pdf";
+                fileName = "/Module/BD_Modul_Objektmanagement.pdf";
+                PDFJS.getDocument(fileName).then(function getPdfHelloWorld(pdf)
+                {
+                    myPDF = pdf;
+                    var scale = 1.25;
+                    scale = 1.25;
+
+
+                    turnMe(1, 2);
+                    /*
+                    pdf.getPage(1).then(function getPageHelloWorld(page)
+                    {
+
+                        var viewport = page.getViewport(scale);
+
+                        //
+                        // Prepare canvas using PDF page dimensions
+                        //
+                        var canvas = document.getElementById('left-canvas');
+                        var context = canvas.getContext('2d');
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+
+                        //
+                        // Render PDF page into canvas context
+                        //
+                        var renderContext = {
+                            canvasContext: context,
+                            viewport: viewport
+                        };
+                        page.render(renderContext);
+                    });
+
+
+                    pdf.getPage(2).then(function getPageHelloWorld(page)
+                    {
+                        var viewport = page.getViewport(scale);
+
+                        //
+                        // Prepare canvas using PDF page dimensions
+                        //
+                        var canvas = document.getElementById('right-canvas');
+                        var context = canvas.getContext('2d');
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+
+                        //
+                        // Render PDF page into canvas context
+                        //
+                        var renderContext = {
+                            canvasContext: context,
+                            viewport: viewport
+                        };
+                        page.render(renderContext);
+                    });
+                    */
+
+                });
+
+
+            }
+
+            if (document.addEventListener) document.addEventListener("DOMContentLoaded", autorun, false);
+            else if (document.attachEvent) document.attachEvent("onreadystatechange", autorun);
+            else window.onload = autorun;
+        </script>
+</body>
+</html>

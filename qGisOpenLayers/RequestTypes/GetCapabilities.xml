@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WMS_Capabilities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.3.0" xmlns="http://www.opengis.net/wms" xsi:schemaLocation="http://www.opengis.net/wms http://schemas.opengis.net/wms/1.3.0/capabilities_1_3_0.xsd http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/sld_capabilities.xsd http://www.qgis.org/wms http:?SERVICE=WMS&amp;REQUEST=GetSchemaExtension" xmlns:sld="http://www.opengis.net/sld" xmlns:qgs="http://www.qgis.org/wms">
+ <Service>
+  <Name>WMS</Name>
+  <!-- Human-readable title for pick lists -->
+  <Title>QGIS mapserver</Title>
+  <!-- Narrative description providing additional information -->
+  <Abstract>A WMS service with QGIS mapserver</Abstract>
+  <KeywordList>
+   <Keyword>QGIS mapserver</Keyword>
+  </KeywordList>
+  <!-- Top-level web address of service or service provider.  See also OnlineResource
+		     elements under <DCPType>. -->
+  <OnlineResource xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://myqgis.com/"/>
+  <!-- Contact information -->
+  <ContactInformation>
+   <ContactPersonPrimary>
+    <ContactPerson>Marco Hugentobler</ContactPerson>
+    <ContactOrganization>Sourcepole AG</ContactOrganization>
+   </ContactPersonPrimary>
+   <ContactAddress>
+    <AddressType>postal</AddressType>
+    <Address>Weberstrasse 5</Address>
+    <City>Zürich</City>
+    <StateOrProvince>ZH</StateOrProvince>
+    <PostCode>8004</PostCode>
+    <Country>SWITZERLAND</Country>
+   </ContactAddress>
+   <ContactVoiceTelephone/>
+   <ContactElectronicMailAddress>marco.hugentobler@sourcepole.ch</ContactElectronicMailAddress>
+  </ContactInformation>
+  <!-- Fees or access constraints imposed. -->
+  <Fees>none</Fees>
+  <AccessConstraints>none</AccessConstraints>
+  <LayerLimit>99</LayerLimit>
+ </Service>
+ <Capability>
+  <Request>
+   <GetCapabilities>
+    <Format>text/xml</Format>
+    <DCPType>
+     <HTTP>
+      <Get>
+       <OnlineResource xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http:?"/>
+      </Get>
+     </HTTP>
+    </DCPType>
+   </GetCapabilities>
+   <GetMap>
+    <Format>image/jpeg</Format>
+    <Format>image/png</Format>
+    <Format>image/png; mode=16bit</Format>
+    <Format>image/png; mode=8bit</Format>
+    <Format>image/png; mode=1bit</Format>
+    <Format>application/dxf</Format>
+    <DCPType>
+     <HTTP>
+      <Get>
+       <OnlineResource xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http:?"/>
+      </Get>
+     </HTTP>
+    </DCPType>
+   </GetMap>
+   <GetFeatureInfo>
+    <Format>text/plain</Format>
+    <Format>text/html</Format>
+    <Format>text/xml</Format>
+    <Format>application/vnd.ogc.gml</Format>
+    <Format>application/vnd.ogc.gml/3.1.1</Format>
+    <DCPType>
+     <HTTP>
+      <Get>
+       <OnlineResource xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http:?"/>
+      </Get>
+     </HTTP>
+    </DCPType>
+   </GetFeatureInfo>
+   <sld:GetLegendGraphic>
+    <Format>image/jpeg</Format>
+    <Format>image/png</Format>
+    <DCPType>
+     <HTTP>
+      <Get>
+       <OnlineResource xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http:?"/>
+      </Get>
+     </HTTP>
+    </DCPType>
+   </sld:GetLegendGraphic>
+   <sld:DescribeLayer>
+    <Format>text/xml</Format>
+    <DCPType>
+     <HTTP>
+      <Get>
+       <OnlineResource xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http:?"/>
+      </Get>
+     </HTTP>
+    </DCPType>
+   </sld:DescribeLayer>
+   <qgs:GetStyles>
+    <Format>text/xml</Format>
+    <DCPType>
+     <HTTP>
+      <Get>
+       <OnlineResource xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http:?"/>
+      </Get>
+     </HTTP>
+    </DCPType>
+   </qgs:GetStyles>
+  </Request>
+  <Exception>
+   <Format>text/xml</Format>
+  </Exception>
+  <sld:UserDefinedSymbolization RemoteWFS="0" RemoteWCS="0" InlineFeature="0" UserStyle="1" SupportSLD="1" UserLayer="0"/>
+  <Layer queryable="1">
+   <Name>postlayer</Name>
+   <Title>postlayer</Title>
+   <CRS>EPSG:4326</CRS>
+   <CRS>EPSG:3857</CRS>
+   <EX_GeographicBoundingBox>
+    <westBoundLongitude>0</westBoundLongitude>
+    <eastBoundLongitude>0</eastBoundLongitude>
+    <southBoundLatitude>0</southBoundLatitude>
+    <northBoundLatitude>0</northBoundLatitude>
+   </EX_GeographicBoundingBox>
+   <BoundingBox CRS="EPSG:3857" maxx="0" minx="0" maxy="-7.08115e-10" miny="-7.08115e-10"/>
+   <BoundingBox CRS="EPSG:4326" maxx="0" minx="0" maxy="0" miny="0"/>
+   <Layer queryable="1">
+    <Name>oneLayer</Name>
+    <Title>Layer1</Title>
+    <CRS>EPSG:4326</CRS>
+    <CRS>EPSG:3857</CRS>
+    <EX_GeographicBoundingBox>
+     <westBoundLongitude>49310</westBoundLongitude>
+     <eastBoundLongitude>53937.2</eastBoundLongitude>
+     <southBoundLatitude>18491.9</southBoundLatitude>
+     <northBoundLatitude>20225.3</northBoundLatitude>
+    </EX_GeographicBoundingBox>
+    <BoundingBox CRS="EPSG:3857" maxx="-1.79769e+308" minx="1.79769e+308" maxy="-1.79769e+308" miny="1.79769e+308"/>
+    <BoundingBox CRS="EPSG:4326" maxx="20225.3" minx="18491.9" maxy="53937.2" miny="49310"/>
+    <Style>
+     <Name>default</Name>
+     <Title>default</Title>
+     <LegendURL>
+      <Format>image/png</Format>
+      <OnlineResource xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http:?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetLegendGraphic&amp;LAYER=oneLayer&amp;FORMAT=image/png&amp;STYLE=default&amp;SLD_VERSION=1.1.0"/>
+     </LegendURL>
+    </Style>
+   </Layer>
+  </Layer>
+ </Capability>
+</WMS_Capabilities>
