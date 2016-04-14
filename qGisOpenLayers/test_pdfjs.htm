@@ -321,7 +321,7 @@
 
         function loadPage(pageNumToLoad, canvasId)
         {
-            if (pageNumToLoad > numPages)
+            if (pageNumToLoad > myPDF.numPages)
             {
                 var canvas = document.getElementById(canvasId);
                 var context = canvas.getContext('2d');
