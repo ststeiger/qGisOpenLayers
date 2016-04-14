@@ -1,12 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>
-    </ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{F5EFCD93-4B0E-4EDF-B7E8-2ED164495F1E}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
@@ -46,17 +43,8 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="body_bg.jpg" />
-    <Content Include="buttons.png" />
-    <Content Include="Confirm\body_bg.jpg" />
-    <Content Include="Confirm\buttons.png" />
-    <Content Include="Confirm\header_bg.jpg" />
-    <Content Include="Confirm\ie.png" />
-    <Content Include="header_bg.jpg" />
-    <Content Include="ie.png" />
     <Content Include="RequestTypes\GetCapabilities.xml" />
     <Content Include="Scripts\PdfJS\compatibility.js" />
     <Content Include="Scripts\PdfJS\debugger.js" />
@@ -159,8 +147,12 @@
     <Content Include="Scripts\ol-debug.js" />
     <Content Include="Scripts\OpenLayers3\ol.css" />
     <Content Include="Scripts\OpenLayers3\ol.js" />
-    <Content Include="viewer.html" />
     <Content Include="Web.config" />
+    <Content Include="images\confirm\body_bg.jpg" />
+    <Content Include="images\confirm\buttons.png" />
+    <Content Include="images\confirm\header_bg.jpg" />
+    <Content Include="images\confirm\ie.png" />
+    <Content Include="viewer.htm" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -168,6 +160,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\" />
+    <Folder Include="images\confirm\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\PdfJS\locale\ach\viewer.properties" />
@@ -492,6 +486,11 @@
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
+    <MonoDevelop>
+      <Properties>
+        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
+      </Properties>
+    </MonoDevelop>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
