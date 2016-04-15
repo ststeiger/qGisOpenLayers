@@ -1,0 +1,18 @@
+
+R3:
+Released under a non-commercial BSD license
+The turn.js project is released under the BSD license and it's available on GitHub. 
+This license doesn't include features of the 4th release.
+
+R4:
+http://www.turnjs.com/get
+
+
+---
+I'm Emmanuel García, a front-end developer from Venezuela, who loves to push the web forward with new technologies.
+
+
+http://paulbourke.net/libraries/paulslib.c
+http://giderosmobile.com/forum/discussion/461/bezier-curve-code/p1
+
+

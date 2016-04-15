@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <script type="text/javascript" src="/Scripts/turnJS/turnjs4/extras/jquery.min.1.7.js"></script>
+    <script type="text/javascript" src="/Scripts/turnJS/turnjs4/extras/jquery.mousewheel.min.js"></script>
+
+    <!--
+    <script type="text/javascript" src="./Scripts/turnJS/turnjs4/lib/turn.min.js"></script>
+    -->
+    <script src="Scripts/PdfJS/pdf.js"></script>
+    <script src="Scripts/PdfJS/pdf.worker.js"></script>
+
+    <script type="text/javascript">
+        PDFJS.workerSrc = './Scripts/PdfJS/pdf.worker.js';
+    </script>
+
+    <script type="text/javascript" src="/Scripts/turnJS/turnjs4/lib/turn.min.js"></script>
+
+
+    <style type="text/css">
+
+        div
+        {
+            border: 1px solid hotpink;
+        }
+
+        .page
+        {
+            border: 1px solid black;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="flipbook-viewport">
+        <div class="container">
+            <div class="flipbook">
+                <!--
+                <div style="background-image:url(pages/1.jpg)"></div>
+                <div style="background-image:url(pages/2.jpg)"></div>
+                <div style="background-image:url(pages/3.jpg)"></div>
+                <div style="background-image:url(pages/4.jpg)"></div>
+                <div style="background-image:url(pages/5.jpg)"></div>
+                <div style="background-image:url(pages/6.jpg)"></div>
+                <div style="background-image:url(pages/7.jpg)"></div>
+                <div style="background-image:url(pages/8.jpg)"></div>
+                <div style="background-image:url(pages/9.jpg)"></div>
+                <div style="background-image:url(pages/10.jpg)"></div>
+                <div style="background-image:url(pages/11.jpg)"></div>
+                <div style="background-image:url(pages/12.jpg)"></div>
+                    -->
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+
+        var pdf = null;
+        // numberOfPages = pdf.numPages;
+
+        function renderPage(num)
+        {
+            if (num > pdf.numPages)
+                return;
+
+            pdf.getPage(num).then(function (page)
+            {
+                var scale = 1.;
+                var viewport = page.getViewport(scale);
+
+                //
+                // Prepare canvas using PDF page dimensions
+                //
+                // var canvasID = 'canv' + num;
+                // var canvas = document.getElementById(canvasID);
+                
+                var addTo = $('.flipbook')[0];
+                var canvas = document.createElement('canvas');
+                // addTo.appendChild(canvas);
+
+                var element = document.createElement("div");
+                element.setAttribute("class", "blackBorder");
+
+                element.appendChild(canvas);
+                addTo.appendChild(element);
+
+                /*
+                if (!book.turn('addPage', element, page))
+                {
+                    console.log("return")
+                    return;
+                }
+                */
+
+
+
+
+                if (canvas == null) return;
+
+                // console.log("not returned")
+                var context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                //
+                // Render PDF page into canvas context
+                //
+                var renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                page.render(renderContext);
+
+
+                if(num == pdf.numPages) 
+                    loadApp();
+
+                // Update page counters
+                // document.getElementById('page-number').textContent = pageNum;
+                // document.getElementById('number-pages').textContent = pdf.numPages;
+            }
+            );
+        }
+
+
+        function loadApp()
+        {
+            // Create the flipbook
+            $('.flipbook').turn({
+                // Width
+                width: 900,
+                // Height
+                height: 500,
+
+                // Elevation
+                elevation: 50,
+
+                // Enable gradients
+                gradients: true,
+
+                // Auto center this flipbook
+                autoCenter: true,
+
+
+
+
+                //acceleration: !isChrome(),
+                // duration: 1000,
+                // pages: pdf.numPages //pdf.numPages,
+
+
+
+                /*
+                , when: {
+                    
+                    turning: function (e, page, view)
+                    {
+                        // var book = $(this),
+                       // currentPage = book.turn('page'),
+                       // pages = book.turn('pages');
+                    }
+                    , turned: function (e, page, view)
+                    {
+                        // var book = $(this);
+
+                        // if (page == 2 || page == 3)
+                        // {
+                        //  book.turn('peel', 'br');
+                        // }
+
+                        // updateDepth(book);
+                        // book.turn('center');
+                    }
+                    ,
+                    
+                    missing: function (e, pages)
+                    {
+                        for (var i = 0; i < pages.length; i++)
+                        {
+                            console.log(pages[i])
+                            renderPage(pages[i], $(this));
+                        }
+
+                    }
+                }
+                */
+            });
+        }
+
+        // Load the HTML4 version if there's not CSS transform
+
+
+        function myReady()
+        {
+            PDFJS.disableWorker = true;
+
+            var fileName = "./Module/OK_BD_Modul_Berichte.pdf";
+            fileName = "./Module/BD_Modul_Objektmanagement.pdf";
+
+            PDFJS.getDocument(fileName).then(function (pdfDoc)
+            {
+                pdf = pdfDoc;
+                // Load turn.js
+
+                for (var i = 1; i <= pdf.numPages; ++i)
+                {
+                    renderPage(i);
+                }
+
+
+                //loadApp();
+            });
+        }
+
+        myReady();
+
+    </script>
+</body>
+</html>

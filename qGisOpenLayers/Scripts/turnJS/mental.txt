@@ -1,0 +1,45 @@
+
+
+https://codepen.io/socialblogsite/pen/FphBJ
+
+By contrast, CoreOS claims that Rocket is a better container standard that’s also outside the control of any single company. 
+Certainly, allegiance to Rocket from Google, Red Hat, and EMC VMware is a blow to Docker, 
+though they will surely continue to support both standards.
+http://blog.xebialabs.com/2014/12/05/rocket-vs-docker-myth-simple-lightweight-enterprise-platform/
+
+
+<div id="progress_title" style="position: absolute; left: 10px; top: 10px; width: 460px; text-align: center; font-family: Tahoma; font-size: 24px; color: white; word-break: keep-all; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-shadow: rgb(140, 151, 203) 0px 0px 5px, rgb(140, 151, 203) 0px 0px 10px, rgb(140, 151, 203) 0px 0px 15px;">Nestle Half-yearly Report 2013</div>
+D:\Stefan.Steiger\Documents\Visual Studio 2013\TFS\StadtZuerich\Stadt Zuerich\Stadt Zuerich\images\Logo
+
+<body style="background-color: rgb(31, 34, 50);">
+http://static.fliphtml5.com/book/js/LoadingJS.js
+
+	colorSplit : function(color){
+		var colorRGB = {r : 0, g : 0, b : 0};
+		
+		var red = "FF",green ="FF",blue = "FF";
+		
+		if(color.length == 7){
+	
+			red = color.substr(1, 2);
+			green = color.substr(3, 2);
+			blue = color.substr(5, 2);		
+		
+		}else if(color.length == 4){
+			
+			red = color.substr(1, 1);
+			green = color.substr(2, 1);
+			blue = color.substr(3, 1);
+			
+			red += red;
+			green += green;
+			blue += blue;
+	
+		}
+		colorRGB.r = parseInt(red,16);
+		colorRGB.g = parseInt(green,16);
+		colorRGB.b = parseInt(blue,16);
+		
+		return colorRGB;
+	},
+	

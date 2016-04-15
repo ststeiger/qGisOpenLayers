@@ -166,6 +166,46 @@
 
     </style>
 
+    <style type="text/css">
+        .arrow-up
+        {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid black;
+        }
+
+        .arrow-down
+        {
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 20px solid #f00;
+        }
+
+        .arrow-right
+        {
+            width: 0;
+            height: 0;
+            border-top: 0.8cm solid transparent;
+            border-bottom: 0.8cm solid transparent;
+            border-left: 0.8cm solid gray;
+            box-shadow: -1px -1px 10px -2px rgba(0, 0, 0, 0.5);
+        }
+
+        .arrow-left
+        {
+            width: 0;
+            height: 0;
+            border-top: 0.8cm solid transparent;
+            border-bottom: 0.8cm solid transparent;
+            border-right: 0.8cm solid gray;
+            box-shadow: -1px -1px 10px -2px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+
 
     <style type="text/css">
         html, body
@@ -224,9 +264,32 @@
             background-image: -o-linear-gradient(right, #FFF 95%, #ddd 100%);
             background-image: -ms-linear-gradient(right, #FFF 95%, #ddd 100%);
         }
-
     </style>
 
+    <!--
+        
+    
+        
+        
+
+        https://mozilla.github.io/pdf.js/examples/learning/helloworld.html
+        https://stackoverflow.com/questions/16480469/how-to-display-whole-pdf-not-only-one-page-with-pdf-js
+
+        http://www.copypastecharacter.com/graphic-shapes
+        https://developer.mozilla.org/en-US/docs/Web/CSS/cursor
+        http://tutorialzine.com/2010/12/better-confirm-box-jquery-css3/
+        http://flipr.ivank.net/
+        http://flipr.ivank.net/?p=getit
+        http://www.maxims6n.bget.ru/
+        http://www.maxims6n.bget.ru/pdf_books/demo_21.html
+
+
+        http://www.jqueryscript.net/tags.php?/confirm/
+        http://codepen.io/Venerons/pen/coqhF
+        https://www.freshdesignweb.com/jquery-javascript-popup-window/
+        https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSTmMk8WlMZ-pDERnW4fWGYnADsEveGFb2GMo7hLV_cR80AlsUdpw
+        http://www.jqueryscript.net/tags.php?/popover/
+    -->
 
     <script src="Scripts/PdfJS/pdf.js"></script>
     <script src="Scripts/PdfJS/pdf.worker.js"></script>
@@ -257,13 +320,31 @@
     <div style="text-align: center; margin-top: 20px;">
 
         <div class="noselect" style="position:relative; display: inline-block;">
+            <!--
             <div class="noselect hand" onclick="turnMe(left - 2, right - 2);" style="position: absolute; left: -20px; top: 0px; bottom: 0px; writing-mode: vertical-lr; -ms-writing-mode: tb-rl; transform-origin: center; transform: rotate(180deg); ">
                 Rückw&auml;rts
             </div>
+            
             <div class="noselect hand" onclick="turnMe(left - -2, right - -2);" style="position: absolute; right: -20px; top: 0px; bottom: 0px; writing-mode: vertical-lr; -ms-writing-mode: tb-rl; transform-origin: center; transform: rotate(180deg); ">
                 Vorw&auml;rts
             </div>
+            -->
 
+            <!--
+                <div class="arrow-left" onclick="turnMe(left - 2, right - 2);" style="position: absolute; margin: auto; top: 0; bottom: 0; left: -35px; "></div>
+                <div class="arrow-right" onclick="turnMe(left - -2, right - -2);" style="position: absolute; margin: auto; top: 0; bottom: 0; right: -35px; "></div>
+            -->    
+            
+            
+            <div class="noselect hand" onclick="turnMe(left - 2, right - 2);" style="position: absolute; top: 50%; left: -0.85cm; transform: translate(0,-50%); font-size: 1.5cm;">&#10094;</div>
+            <div class="noselect hand" onclick="turnMe(left - -2, right - -2);" style="position: absolute; top: 50%; right: -0.85cm; transform: translate(0,-50%); font-size: 1.5cm;">&#10095;</div>
+            
+            <!--
+            <div class="arrow-up"></div>
+            <div class="arrow-down"></div>
+            <div class="arrow-left"></div>
+            <div class="arrow-right"></div>
+            -->
 
             <div style="position: relative; display: inline-block;">
                 <div class="noselect" style="position: absolute; top: -20px; left: 0px; right: 0px;">
