@@ -45,6 +45,21 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="clock.html" />
+    <Content Include="Scripts\clockpicker\bootstrap-clockpicker.css" />
+    <Content Include="Scripts\clockpicker\bootstrap-clockpicker.js" />
+    <Content Include="Scripts\clockpicker\bootstrap-clockpicker.min.css" />
+    <Content Include="Scripts\clockpicker\bootstrap-clockpicker.min.js" />
+    <Content Include="Scripts\clockpicker\bootstrap.min.css" />
+    <Content Include="Scripts\clockpicker\bootstrap.min.js" />
+    <Content Include="Scripts\clockpicker\github.min.css" />
+    <Content Include="Scripts\clockpicker\highlight.min.js" />
+    <Content Include="Scripts\clockpicker\jquery-clockpicker.css" />
+    <Content Include="Scripts\clockpicker\jquery-clockpicker.js" />
+    <Content Include="Scripts\clockpicker\jquery-clockpicker.min.css" />
+    <Content Include="Scripts\clockpicker\jquery-clockpicker.min.js" />
+    <Content Include="Scripts\clockpicker\jquery.js" />
+    <Content Include="Scripts\clockpicker\jquery.min.js" />
     <Content Include="Scripts\turnJS\mental.txt" />
     <Content Include="Scripts\turnJS\license.txt" />
     <Content Include="Scripts\turnJS\turnjs3\changelog.txt" />
