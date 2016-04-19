@@ -16,6 +16,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="clock.html" />
+    <Content Include="inlinesvg.htm" />
     <Content Include="Scripts\clockpicker\bootstrap-clockpicker.css" />
     <Content Include="Scripts\clockpicker\bootstrap-clockpicker.js" />
     <Content Include="Scripts\clockpicker\bootstrap-clockpicker.min.css" />
@@ -816,6 +818,7 @@
     <Content Include="Scripts\turnJS\turnjs4\samples\magazine\pages\9-regions.json" />
     <Content Include="Scripts\turnJS\turnjs4\samples\steve-jobs\fonts\Stempel-Garamond-W01-Roman.woff" />
     <Content Include="Scripts\turnJS\turnjs4\turnjs4-api-docs.pdf" />
+    <Content Include="coords.xlsx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
