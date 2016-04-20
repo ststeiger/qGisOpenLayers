@@ -70,19 +70,40 @@
                 rect.setAttribute('rx', '7');
                 return rect;
             }
-            , createText: function ()
+            ,createText:function (svgDocument, x, y, t, color)
             {
-                var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                text.setAttribute('x', '10');
-                text.setAttribute('y', '20');
-                text.setAttribute('fill', '#000');
-                text.textContent = '2';
-                return text;
-            }
+				var svgns = 'http://www.w3.org/2000/svg';
+				var textNode = document.createTextNode(t);
+				var textElement = document.createElementNS(svgns, "text");
+				textElement.appendChild(textNode);
+				
+				textElement.setAttribute('x', x);
+                textElement.setAttribute('y', y);
+                textElement.setAttribute('fill', color);
+                textElement.style = "font-size: 3px;";
+                
+                var origState = textElement.style.visibility;
+                textElement.style.visibility = "hidden";
+				
+				
+				// svgDocument.documentElement.appendChild(textElement);
+				svgDocument.appendChild(textElement);
+				var bbox = textElement.getBBox();
+				textElement.parentElement.removeChild(textElement);
+				textElement.style.visibility = origState;
+				
+				x -= bbox.width/2.0;
+				y += bbox.height/4.0;
+				
+				textElement.setAttribute('x', x);
+                textElement.setAttribute('y', y);
+				
+				return textElement;
+			}
         }
 
 
-        function drawHours()
+        function drawClock()
         {
             var svgElement = document.getElementById('mySVG');
             var svgDocument = svgElement; //svgElement.getSVGDocument();
@@ -91,7 +112,7 @@
             var midpointY = 50;
             var radius = 30;
 
-            var x2, y2, xBase = 50, yBase = midpointY - radius;
+            var x2, y2, xBase = midpointX, yBase = midpointY - radius;
             xBase -= midpointX;
             yBase -= midpointY;
 
@@ -107,14 +128,16 @@
                 y2 += midpointY;
 
                 svgDocument.appendChild(SVG.createLine(midpointX, midpointY, x2, y2, "red", 1));
+                svgDocument.appendChild(SVG.createText(svgDocument, x2, y2, angle, "#FF00FF"));
             } // Next angle
-
+            
+            
         } // End Function drawHours
 
     </script>
 </head>
 <body id="body">
-    <input type="button" value="Run" onclick="drawHours()" />
+    <input type="button" value="Run" onclick="drawClock()" />
 
     <svg id="mySVG" xmlns="http://www.w3.org/2000/svg" version="1.1" 
          viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"
@@ -145,7 +168,7 @@
     <script type="text/javascript">
         function autorun()
         {
-
+			drawClock();
         }
         if (document.addEventListener) document.addEventListener("DOMContentLoaded", autorun, false);
         else if (document.attachEvent) document.attachEvent("onreadystatechange", autorun);
