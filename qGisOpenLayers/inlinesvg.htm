@@ -31,16 +31,18 @@
 
     <script type="text/javascript">
 
-        SVG = {
-            createCanvas: function (width, height, containerId) {
+        var SVG = {
+            createCanvas: function (width, height, containerId)
+            {
                 var container = document.getElementById(containerId);
                 var canvas = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
                 canvas.setAttribute('width', width);
                 canvas.setAttribute('height', height);
                 container.appendChild(canvas);
                 return canvas;
-            },
-            createLine: function (x1, y1, x2, y2, color, w) {
+            }
+            ,createLine: function (x1, y1, x2, y2, color, w)
+            {
                 var aLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
                 aLine.setAttribute('x1', x1);
                 aLine.setAttribute('y1', y1);
@@ -50,7 +52,8 @@
                 aLine.setAttribute('stroke-width', w);
                 return aLine;
             }
-            ,createCircle: function (cx, cy, r, color) {
+            ,createCircle: function (cx, cy, r, color)
+            {
                 var svgns = 'http://www.w3.org/2000/svg';
                 var shape = document.createElementNS(svgns, "circle");
                 shape.setAttributeNS(null, "cx", cx);
@@ -59,7 +62,7 @@
                 shape.setAttributeNS(null, "fill", color);
                 return shape;
             }
-            , createRectangle: function ()
+            ,createRectangle: function ()
             {
                 var rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
                 rect.setAttribute('width', '187');
@@ -78,18 +81,28 @@
 				textElement.appendChild(textNode);
 				
 				textElement.setAttribute('x', x);
-                textElement.setAttribute('y', y);
+				textElement.setAttribute('y', y);
+
+                // https://developer.mozilla.org/en-US/docs/Web/SVG/Element/text
+                // textElement.setAttribute('font-family', "sans-serif");
+                // textElement.setAttribute('font-family', "Verdana");
+				textElement.setAttribute('font-family', "Times New Roman");
+                textElement.setAttribute('font-size', "3px");
+                // textElement.setAttribute('stroke-width', 2);
+                // textElement.setAttribute('stroke', color);
                 textElement.setAttribute('fill', color);
-                textElement.style = "font-size: 3px;";
+                
+                // Not supported in IE11
+                // textElement.style = "font-size: 1px;";
                 
                 var origState = textElement.style.visibility;
                 textElement.style.visibility = "hidden";
 				
-				
-				// svgDocument.documentElement.appendChild(textElement);
+
+                // svgDocument.documentElement.appendChild(textElement);
 				svgDocument.appendChild(textElement);
 				var bbox = textElement.getBBox();
-				textElement.parentElement.removeChild(textElement);
+                textElement.parentNode.removeChild(textElement);
 				textElement.style.visibility = origState;
 				
 				x -= bbox.width/2.0;
@@ -170,10 +183,10 @@
         {
 			drawClock();
         }
+
         if (document.addEventListener) document.addEventListener("DOMContentLoaded", autorun, false);
         else if (document.attachEvent) document.attachEvent("onreadystatechange", autorun);
         else window.onload = autorun;
     </script>
-
 </body>
 </html>
