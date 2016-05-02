@@ -105,18 +105,7 @@
     <Content Include="Scripts\turnJS\turnjs4\samples\basic\index - Kopie.html" />
     <Content Include="Scripts\turnJS\turnjs4\samples\basic\index.html" />
     <Content Include="Scripts\turnJS\turnjs4\samples\basic\js\basic.js" />
-    <Content Include="Scripts\turnJS\turnjs4\samples\basic\pages\1.jpg" />
-    <Content Include="Scripts\turnJS\turnjs4\samples\basic\pages\10.jpg" />
-    <Content Include="Scripts\turnJS\turnjs4\samples\basic\pages\11.jpg" />
-    <Content Include="Scripts\turnJS\turnjs4\samples\basic\pages\12.jpg" />
-    <Content Include="Scripts\turnJS\turnjs4\samples\basic\pages\2.jpg" />
-    <Content Include="Scripts\turnJS\turnjs4\samples\basic\pages\3.jpg" />
-    <Content Include="Scripts\turnJS\turnjs4\samples\basic\pages\4.jpg" />
-    <Content Include="Scripts\turnJS\turnjs4\samples\basic\pages\5.jpg" />
-    <Content Include="Scripts\turnJS\turnjs4\samples\basic\pages\6.jpg" />
-    <Content Include="Scripts\turnJS\turnjs4\samples\basic\pages\7.jpg" />
-    <Content Include="Scripts\turnJS\turnjs4\samples\basic\pages\8.jpg" />
-    <Content Include="Scripts\turnJS\turnjs4\samples\basic\pages\9.jpg" />
+    <Content Include="Scripts\turnJS\turnjs4\samples\cor\js\cor.js.ts" />
     <Content Include="Scripts\turnJS\turnjs4\samples\docs\css\docs.css" />
     <Content Include="Scripts\turnJS\turnjs4\samples\docs\css\jquery.ui.css" />
     <Content Include="Scripts\turnJS\turnjs4\samples\docs\css\jquery.ui.html4.css" />
@@ -213,6 +202,16 @@
     <Content Include="Scripts\turnJS\turnjs4\samples\magazine\pics\zoom-icons.png" />
     <Content Include="Scripts\turnJS\turnjs4\samples\magazine\pics\zoom.png" />
     <Content Include="Scripts\turnJS\turnjs4\samples\magazine\slider.html" />
+    <Content Include="Scripts\turnJS\turnjs4\samples\cor\css\cor.css" />
+    <Content Include="Scripts\turnJS\turnjs4\samples\cor\index.html" />
+    <Content Include="Scripts\turnJS\turnjs4\samples\cor\js\cor.js" />
+    <Content Include="Scripts\turnJS\turnjs4\samples\cor\oridIndex.html" />
+    <Content Include="Scripts\turnJS\turnjs4\samples\cor\pics\gradient-page-left.jpg" />
+    <Content Include="Scripts\turnJS\turnjs4\samples\cor\pics\gradient-page-right.jpg" />
+    <Content Include="Scripts\turnJS\turnjs4\samples\cor\pics\loader.gif" />
+    <Content Include="Scripts\turnJS\turnjs4\samples\cor\pics\pages-depth.png" />
+    <Content Include="Scripts\turnJS\turnjs4\samples\cor\pics\preview.jpg" />
+    <Content Include="Scripts\turnJS\turnjs4\samples\cor\pics\spine.png" />
     <Content Include="Scripts\turnJS\turnjs4\samples\steve-jobs\css\jquery.ui.css" />
     <Content Include="Scripts\turnJS\turnjs4\samples\steve-jobs\css\jquery.ui.html4.css" />
     <Content Include="Scripts\turnJS\turnjs4\samples\steve-jobs\css\steve-jobs-html4.css" />
@@ -507,7 +506,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\turnJS\turnjs4\samples\basic\pics\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\PdfJS\locale\ach\viewer.properties" />
