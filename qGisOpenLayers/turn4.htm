@@ -234,7 +234,7 @@
         }
 
 
-
+        /*
         .even 
         {
             position: absolute;
@@ -266,7 +266,7 @@
             background-image: -o-linear-gradient(right, rgba(0,0,0,0) 95%, rgba(0,0,0,0.15) 100%);
             background-image: linear-gradient(right, rgba(0,0,0,0) 95%, rgba(0,0,0,0.15) 100%);
         }
-
+        */
 
     </style>
 
@@ -308,16 +308,15 @@
             windowHeight -= 30;
 
             var vp = page.getViewport(1.0);
-            var myscale_x = windowWidth / vp.width
-            var myscale_y = windowHeight / vp.height;
-            var myscale = Math.min(myscale_x, myscale_y)
+            var scale_x = windowWidth / vp.width
+            var scale_y = windowHeight / vp.height;
+            var scale = Math.min(scale_x, scale_y)
 
-            // alert("myscale_x: " + myscale_x + ", " + "myscale_y: " + myscale_y );
-            // alert("myscale: " + myscale);
+            // alert("scale_x: " + scale_x + ", " + "scale_y: " + scale_y );
+            // alert("scale: " + scale);
 
-            return myscale;
+            return scale;
         }
-
 
 
         function renderPage(num)
@@ -521,13 +520,41 @@
         $('#canvas').css({ visibility: 'hidden' });
 
 
+        // https://stackoverflow.com/questions/979975/how-to-get-the-value-from-the-url-parameter?page=1&tab=votes#tab-top
+        function getUrlVars(urlHref)
+        {
+            var vars = [], hash;
+            var hashes = urlHref.slice(urlHref.indexOf('?') + 1).split('&');
+            var i;
 
-        function myReady()
+            for (i = 0; i < hashes.length; i++)
+            {
+                hash = hashes[i].split('=');
+                vars.push(decodeURIComponent(hash[0]));
+                vars[decodeURIComponent(hash[0])] = decodeURIComponent(hash[1]);
+            } // Next i 
+
+            return vars;
+        } // End Function getUrlVars
+
+
+        function onDocumentReady()
         {
             PDFJS.disableWorker = true;
             var fileName = "./Module/OK_BD_Modul_Berichte.pdf";
             fileName = "./Module/BD_Modul_Objektmanagement.pdf";
 
+            // var dict = getUrlVars(window.location.search);
+            // var fileName = dict["name"];
+
+            if (!fileName || fileName.length === 0)
+            {
+                alert("Invalid filename");
+                return;
+            }
+
+
+            // fileName = "../ajax/Files.ashx?name=" + encodeURIComponent(fileName);
             PDFJS.getDocument(fileName).then(function (pdfDoc)
             {
                 numberOfPages = pdfDoc.numPages;
@@ -539,7 +566,7 @@
             });
         }
 
-        myReady();
+        onDocumentReady();
         
     </script>
 </body>
